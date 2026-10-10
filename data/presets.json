@@ -1,0 +1,18 @@
+{
+  "cache": [
+    { "name": "Sequential walk — all hits", "params": { "pattern": "sequential" } },
+    { "name": "Strided walk — every access misses", "params": { "pattern": "stride", "stride": 4 } },
+    { "name": "Column-major — conflict misses", "params": { "pattern": "column" } },
+    { "name": "Tiled — stay in cache", "params": { "pattern": "blocked", "block": 2 } },
+    { "name": "Direct-mapped thrashing", "params": { "pattern": "stride", "stride": 4 }, "cfg": { "assoc": 1, "numLines": 4 } }
+  ],
+  "coherence": [
+    { "name": "False sharing (unpadded)", "params": { "sameLine": "yes", "iters": 6 } },
+    { "name": "Padded (no sharing)", "params": { "sameLine": "no", "iters": 6 } }
+  ],
+  "reduction": [
+    { "name": "Warp tree (5 steps)", "params": { "n": 32, "mode": "tree" } },
+    { "name": "Serial reduction (31 steps)", "params": { "n": 32, "mode": "sequential" } },
+    { "name": "Small warp, tree", "params": { "n": 8, "mode": "tree" } }
+  ]
+}
