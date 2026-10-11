@@ -33,33 +33,19 @@ HPC engineers reason about a system they have never seen.
 
 ---
 
-## The seams
-
-### Architectural (data path)
-
+## The Seams list
 | Seam | What screws you up |
 |---|---|
-| **Compute → Memory** | Cache misses and waiting on RAM |
 | **Inter-Node Network** | Slow network fabrics slowing down MPI |
 | **Compute → Storage** | Parallel I/O choking during checkpoints |
 | **Hardware → Software** | Inefficient compilers or unoptimized GPU kernels |
-
-### Physical / operational (environment)
-
-| Seam | What screws you up |
-|---|---|
-| **Energy & Thermal** | Throttling due to power limits or heat |
-| **Resiliency & Fault** | Wasted time restarting jobs from dead nodes |
-| **Orchestration / Topology** | Bad job placement across the physical cluster |
-
-### Proposed additions
-
-| Seam | What screws you up |
-|---|---|
 | **Synchronization / Coherence** | False sharing, lock contention, cache traffic |
 | **Scaling / Stragglers** | One slow rank stalls everyone at the barrier |
 | **Host ↔ Accelerator** | Naive copies and un-overlapped transfers |
 | **Numerical Reproducibility** | Reduction order changes the last bits |
+| **Energy & Thermal** | Throttling due to power limits or heat |
+| **Resiliency & Fault** | Wasted time restarting jobs from dead nodes |
+| **Orchestration / Topology** | Bad job placement across the physical cluster |
 
 ---
 
@@ -119,13 +105,6 @@ seams/
 │       └── results/                # measured numbers + plots
 └── LICENSE
 ```
-
----
-
-## Scope — v1
-
-One gold-standard seam, end to end — **Compute → Memory** — to prove the template.
-Everything else is added only once this one is complete and honest.
 
 ---
 
